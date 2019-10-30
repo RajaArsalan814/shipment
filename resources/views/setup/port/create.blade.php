@@ -88,7 +88,7 @@
                                 <option disabled="true" selected>Select Charge Type</option>
                                 @foreach ($charges as $item)
                                 <option
-                                @if($item->id=='2')
+                                @if($item->id==$port_charges->charges_id)
                                 selected
                                 @endif
                                 value="{{$item->id}}">{{$item->charge_type}}</option>

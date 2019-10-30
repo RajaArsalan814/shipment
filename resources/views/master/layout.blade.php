@@ -431,7 +431,7 @@
             <li class=""><a href="{{route('shipper')}}"> Shipper</a></li>
             <li><a href="{{route('consignee')}}"> Consignee</a></li>
             <li><a href="{{route('forwarder')}}"> Forwarder</a></li>
-            <li class=""><a href="advanced.html">Vessel</a></li>
+            <li class=""><a href="{{route('vessel')}}">Vessel</a></li>
             <li><a href="{{route('depot')}}"> Depot</a></li>
             <li><a href="{{route('container')}}"> Container</a></li>
           </ul>
@@ -465,7 +465,7 @@
             </ul>
         </li>
 
-        <li class="treeview">
+        {{-- <li class="treeview">
           <a href="#">
             <i class="fa fa-table"></i> <span>Tables</span>
             <span class="pull-right-container">
@@ -476,8 +476,8 @@
             <li><a href="../tables/simple.html"><i class="fa fa-circle-o"></i> Simple tables</a></li>
             <li><a href="../tables/data.html"><i class="fa fa-circle-o"></i> Data tables</a></li>
           </ul>
-        </li>
-        <li>
+        </li> --}}
+        {{-- <li>
           <a href="../calendar.html">
             <i class="fa fa-calendar"></i> <span>Calendar</span>
             <span class="pull-right-container">
@@ -485,8 +485,8 @@
               <small class="label pull-right bg-blue">17</small>
             </span>
           </a>
-        </li>
-        <li>
+        </li> --}}
+        {{-- <li>
           <a href="../mailbox/mailbox.html">
             <i class="fa fa-envelope"></i> <span>Mailbox</span>
             <span class="pull-right-container">
@@ -495,8 +495,8 @@
               <small class="label pull-right bg-red">5</small>
             </span>
           </a>
-        </li>
-        <li class="treeview">
+        </li> --}}
+        {{-- <li class="treeview">
           <a href="#">
             <i class="fa fa-folder"></i> <span>Examples</span>
             <span class="pull-right-container">
@@ -514,8 +514,8 @@
             <li><a href="../examples/blank.html"><i class="fa fa-circle-o"></i> Blank Page</a></li>
             <li><a href="../examples/pace.html"><i class="fa fa-circle-o"></i> Pace Page</a></li>
           </ul>
-        </li>
-        <li class="treeview">
+        </li> --}}
+        {{-- <li class="treeview">
           <a href="#">
             <i class="fa fa-share"></i> <span>Multilevel</span>
             <span class="pull-right-container">
@@ -553,6 +553,7 @@
         <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Important</span></a></li>
         <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Warning</span></a></li>
         <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>Information</span></a></li>
+       --}}
       </ul>
     </section>
     <!-- /.sidebar -->

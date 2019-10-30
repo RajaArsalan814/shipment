@@ -15,7 +15,7 @@ class PortController extends Controller
     }
 
     public function index(){
-        $port=Port::all();
+        $port=Port::with('port_charges.charges')->get();
         return view('setup.port.port',compact($port,'port'));
     }
 
@@ -68,7 +68,7 @@ class PortController extends Controller
     public function edit($id){
         $isEdit=true;
         $port=Port::find($id);
-        $port_charges=PortCharges::with('charges')->where('port_id',$id)->get();
+        $port_charges=PortCharges::where('port_id',$id)->first();
         $charges=Charges::all();
         return view('setup.port.create',compact($isEdit,'isEdit',$charges,'charges',$port,'port',$port_charges,'port_charges'));
     }

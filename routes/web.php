@@ -74,6 +74,14 @@ Route::post('/agent/store','AgentController@store')->name('agent.store');
 Route::get('/agent/edit/{id}','AgentController@edit')->name('agent.edit');
 Route::post('/agent/update/{id}','AgentController@update')->name('agent.update');
 
+
+Route::get('/vessel/create','VesselController@create')->name('vessel.create');
+Route::get('/vessel/index','VesselController@index')->name('vessel');
+Route::post('/vessel/store','VesselController@store')->name('vessel.store');
+Route::get('/vessel/edit/{id}','VesselController@edit')->name('vessel.edit');
+Route::post('/vessel/update/{id}','VesselController@update')->name('vessel.update');
+
+
 Route::get('/simple', function () {
     return view('setup.simple');
 });

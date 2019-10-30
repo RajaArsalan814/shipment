@@ -51,7 +51,7 @@
                     <div class="form-group">
                         <label for="code">Address:</label>
                         @if($isEdit==true)
-                        <textarea name="description" id="" class="form-control" cols="30" rows="5">{{$container_line->description}}</textarea>
+                    <textarea name="description" id="" class="form-control" cols="30"  rows="5">{{$container_line->address}}</textarea>
                         @else
                         <textarea name="description" id="" class="form-control" cols="30" rows="5"></textarea>
                         @endif
