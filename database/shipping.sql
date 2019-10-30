@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 29, 2019 at 08:44 PM
--- Server version: 10.3.16-MariaDB
--- PHP Version: 7.3.6
+-- Generation Time: Oct 30, 2019 at 08:02 AM
+-- Server version: 10.4.6-MariaDB
+-- PHP Version: 7.3.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -109,10 +109,8 @@ CREATE TABLE `charges` (
 --
 
 INSERT INTO `charges` (`id`, `code`, `description`, `user_id`, `created_at`, `charge_type`, `updated_at`) VALUES
-(1, '542', 'asd', '1', '2019-10-27 19:51:22.632606', 'export', '2019-10-27 19:51:47.964482'),
-(2, '34', '34', '1', '2019-10-28 03:00:11.203036', '34', '2019-10-28 03:00:11.203036'),
-(3, '44', 'asd', '1', '2019-10-28 03:03:59.005534', 'eff', '2019-10-28 03:03:59.005534'),
-(4, '465', 'asd', '1', '2019-10-28 21:33:26.360613', 'asd', '2019-10-28 21:33:26.360613');
+(1, '542', 'asd', '1', '2019-10-27 19:51:22.632606', 'Import', '2019-10-27 19:51:47.964482'),
+(2, '343', 'asd', '1', '2019-10-28 03:00:11.203036', 'Export', '2019-10-28 03:00:11.203036');
 
 -- --------------------------------------------------------
 
@@ -139,7 +137,7 @@ CREATE TABLE `company` (
 --
 
 INSERT INTO `company` (`id`, `code`, `name`, `address`, `contact_no`, `fax_no`, `email`, `url`, `user_id`, `created_at`, `updated_at`) VALUES
-(1, '12322', 'asdss', 'arsa', '12341654', '123', 'asda@gmail.com', 'asdasd', '2', '2019-10-25 07:00:00.000000', '2019-10-26 04:18:47.967840');
+(1, '12322', 'asdss', 'asdasdasdasd', '12341654', '123', 'asda@gmail.com', 'asdasd', '2', '2019-10-25 07:00:00.000000', '2019-10-26 04:18:47.967840');
 
 -- --------------------------------------------------------
 
@@ -189,7 +187,7 @@ CREATE TABLE `container_master` (
 --
 
 INSERT INTO `container_master` (`id`, `code`, `description`, `container_type_id`, `cost`, `company_id`, `pur_port_id`, `supplier`) VALUES
-(1, 'asasd', 'jh', 2, 232, 1, 1, 'ads');
+(1, 'asasd', 'jhasdasdasdsadsad', 2, 232, 1, 1, 'ads');
 
 -- --------------------------------------------------------
 
@@ -380,8 +378,9 @@ CREATE TABLE `port` (
 --
 
 INSERT INTO `port` (`id`, `code`, `name`, `address`, `created_at`, `updated_at`) VALUES
-(2, '23', 'al jazera', 'dubai', '2019-10-28 15:07:29.805440', '2019-10-28 15:07:29.805440'),
-(3, '134', 'asd', 'asd', '2019-10-28 15:08:12.733515', '2019-10-28 15:08:12.733515');
+(1, '23', 'al jazera', 'dubai', '2019-10-28 15:07:29.805440', '2019-10-28 15:07:29.805440'),
+(2, '134', 'asd', 'asd', '2019-10-28 15:08:12.733515', '2019-10-28 15:08:12.733515'),
+(3, '1235', 'al jazera', 'dubai', '2019-10-30 05:52:38.376002', '2019-10-30 05:52:38.376002');
 
 -- --------------------------------------------------------
 
@@ -404,7 +403,8 @@ CREATE TABLE `port_charges` (
 
 INSERT INTO `port_charges` (`id`, `port_id`, `charges_id`, `amount`, `created_at`, `updated_at`) VALUES
 (1, 1, 1, 222, '2019-10-28 15:07:29.929505', '2019-10-28 15:07:29.929505'),
-(2, 2, 2, 444, '2019-10-28 15:08:12.817011', '2019-10-28 15:08:12.817011');
+(2, 2, 2, 444, '2019-10-28 15:08:12.817011', '2019-10-28 15:08:12.817011'),
+(3, 3, 1, 1450, '2019-10-30 05:52:38.406589', '2019-10-30 05:52:38.406589');
 
 -- --------------------------------------------------------
 
@@ -498,13 +498,20 @@ CREATE TABLE `uom` (
 
 CREATE TABLE `vessel` (
   `id` int(11) NOT NULL,
-  `vessel_code` varchar(10) DEFAULT NULL,
+  `code` varchar(10) DEFAULT NULL,
   `name` varchar(100) DEFAULT NULL,
   `owner` varchar(100) DEFAULT NULL,
   `user_id` varchar(15) DEFAULT NULL,
   `created_at` timestamp(6) NULL DEFAULT current_timestamp(6),
   `updated_at` timestamp(6) NOT NULL DEFAULT current_timestamp(6)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `vessel`
+--
+
+INSERT INTO `vessel` (`id`, `code`, `name`, `owner`, `user_id`, `created_at`, `updated_at`) VALUES
+(1, '1234', 'vessel 1', 'asd', NULL, '2019-10-30 13:36:42.285249', '2019-10-30 13:36:42.285249');
 
 -- --------------------------------------------------------
 
@@ -716,13 +723,13 @@ ALTER TABLE `invoice_import`
 -- AUTO_INCREMENT for table `port`
 --
 ALTER TABLE `port`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `port_charges`
 --
 ALTER TABLE `port_charges`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `shipper`
@@ -758,7 +765,7 @@ ALTER TABLE `uom`
 -- AUTO_INCREMENT for table `vessel`
 --
 ALTER TABLE `vessel`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `voyage`
