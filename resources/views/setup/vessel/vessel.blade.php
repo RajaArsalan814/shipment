@@ -33,7 +33,7 @@
                 <div class="input-group input-group-md hidden-xs col-md-offset-7" style="width: 150px;">
 
                   <div class="input-group-btn">
-                    <a href="{{route('vessel.create')}}" class="btn btn-primary ">Create</a>
+                    <a href="{{route('vessel.create')}}" class="btn btn-primary ">create</a>
                   </div>
                 </div>
               </div>
