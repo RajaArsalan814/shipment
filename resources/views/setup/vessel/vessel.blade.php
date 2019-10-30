@@ -42,9 +42,9 @@
             <div class="box-body table-responsive no-padding">
               <table class="table table-hover">
                 <tr>
-                  <th> S : No </th>
-                  <th>code</th>
-                  <th>description</th>
+                  <th> S : no </th>
+                  <th>Code</th>
+                  <th>Description</th>
                   <th>Charger Type</th>
                   <th>Action</th>
                 </tr>
