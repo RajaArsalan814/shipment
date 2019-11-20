@@ -18,89 +18,6 @@
 <!-- Main content -->
 <section class="content">
 
-  {{--  <!-- SELECT2 EXAMPLE -->
-  <div class="box box-default">
-    <div class="box-header with-border">
-      <h3 class="box-title">Select2</h3>
-
-      <div class="box-tools pull-right">
-        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
-      </div>
-    </div>
-    <!-- /.box-header -->
-    <div class="box-body">
-      <div class="row">
-        <div class="col-md-6">
-          <div class="form-group">
-            <label>Minimal</label>
-            <select class="form-control select2" style="width: 100%;">
-              <option selected="selected">Alabama</option>
-              <option>Alaska</option>
-              <option>California</option>
-              <option>Delaware</option>
-              <option>Tennessee</option>
-              <option>Texas</option>
-              <option>Washington</option>
-            </select>
-          </div>
-          <!-- /.form-group -->
-          <div class="form-group">
-            <label>Disabled</label>
-            <select class="form-control select2" disabled="disabled" style="width: 100%;">
-              <option selected="selected">Alabama</option>
-              <option>Alaska</option>
-              <option>California</option>
-              <option>Delaware</option>
-              <option>Tennessee</option>
-              <option>Texas</option>
-              <option>Washington</option>
-            </select>
-          </div>
-          <!-- /.form-group -->
-        </div>
-        <!-- /.col -->
-        <div class="col-md-6">
-          <div class="form-group">
-            <label>Multiple</label>
-            <select class="form-control select2" multiple="multiple" data-placeholder="Select a State"
-                    style="width: 100%;">
-              <option>Alabama</option>
-              <option>Alaska</option>
-              <option>California</option>
-              <option>Delaware</option>
-              <option>Tennessee</option>
-              <option>Texas</option>
-              <option>Washington</option>
-            </select>
-          </div>
-          <!-- /.form-group -->
-          <div class="form-group">
-            <label>Disabled Result</label>
-            <select class="form-control select2" style="width: 100%;">
-              <option selected="selected">Alabama</option>
-              <option>Alaska</option>
-              <option disabled="disabled">California (disabled)</option>
-              <option>Delaware</option>
-              <option>Tennessee</option>
-              <option>Texas</option>
-              <option>Washington</option>
-            </select>
-          </div>
-          <!-- /.form-group -->
-        </div>
-        <!-- /.col -->
-      </div>
-      <!-- /.row -->
-    </div>
-    <!-- /.box-body -->
-    <div class="box-footer">
-      Visit <a href="https://select2.github.io/">Select2 documentation</a> for more examples and information about
-      the plugin.
-    </div>
-  </div>
-  <!-- /.box -->  --}}
-
   <div class="row">
     <div class="col-md-12">
 
@@ -146,7 +63,7 @@
                         <span class="text-danger">{{$errors->first('name') ?? null}}</span>
                     </div>
                 </div>
-
+{{--
             <div class="col-md-6">
                     <div class="form-group">
                         <label for="code">agent Type:</label>
@@ -156,7 +73,7 @@
                             <option value="2">2</option>
                         </select>
                     </div>
-            </div>
+            </div>  --}}
             @csrf
             <div class="col-md-6">
                     <div class="form-group">
@@ -202,38 +119,43 @@
                         <span class="text-danger">{{$errors->first('contact_person') ?? null}}</span>
                     </div>
             </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                            <label for="code">OwnerShip:</label>
-                            <select name="company_id" id="" class="form-control">
-                                <option disabled="true" selected>Select agent Type</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                            </select>
-                </div>
-            </div>
-            <div class="col-md-6">
-                    <div class="form-group">
-                            <label for="code">Purchase From:</label>
-                            <select name="pur_port_id" id="" class="form-control">
-                                <option disabled="true" selected>Purchase From</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                            </select>
-                </div>
-                </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                        <label for="url">Supplier:</label>
-                        @if($isEdit==true)
-                        <input type="text" name="supplier" class="form-control" value="{{$agent->supplier}}" >
-                        @else
-                        <input type="text" name="supplier" class="form-control" >
-                        @endif
-                        <span class="text-danger">{{$errors->first('supplier') ?? null}}</span>
 
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="contact">User Name:</label>
+                    @if($isEdit==true)
+                    <input type="text" name="contact_person" class="form-control" value="{{$agent->contact_person}}" >
+                    @else
+                    <input type="text" name="contact_person" class="form-control" >
+                    @endif
+                    <span class="text-danger">{{$errors->first('contact_person') ?? null}}</span>
                 </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                        <label for="code">Port:</label>
+                        <select name="company_id" id="" class="form-control">
+                            <option disabled="true" selected>Select Port</option>
+                            @foreach ($port as $item)
+                            <option value="{{$item->id}}">{{$item->name}}</option>
+                            @endforeach
+                        </select>
             </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="form-group">
+                        <label for="code">Charges:</label>
+                        <select name="company_id" id="" class="form-control">
+                            <option disabled="true" selected>Select Charges</option>
+                            @foreach ($port as $item)
+                            <option value="{{$item->id}}">{{$item->name}}</option>
+                            @endforeach
+                        </select>
+            </div>
+        </div>
+
             <div class="col-md-3 col-md-offset-5">
                     <a href="{{route('agent')}}" class="btn btn-primary">Back</a>
                     &nbsp;&nbsp;&nbsp;&nbsp;
@@ -250,53 +172,6 @@
         <!-- /.box-body -->
       </div>
       <!-- /.box -->
-
-      {{--  <div class="box box-info">
-        <div class="box-header">
-          <h3 class="box-title">Color & Time Picker</h3>
-        </div>
-        <div class="box-body">
-          <!-- Color Picker -->
-          <div class="form-group">
-            <label>Color picker:</label>
-            <input type="text" class="form-control my-colorpicker1">
-          </div>
-          <!-- /.form group -->
-
-          <!-- Color Picker -->
-          <div class="form-group">
-            <label>Color picker with addon:</label>
-
-            <div class="input-group my-colorpicker2">
-              <input type="text" class="form-control">
-
-              <div class="input-group-addon">
-                <i></i>
-              </div>
-            </div>
-            <!-- /.input group -->
-          </div>
-          <!-- /.form group -->
-
-          <!-- time Picker -->
-          <div class="bootstrap-timepicker">
-            <div class="form-group">
-              <label>Time picker:</label>
-
-              <div class="input-group">
-                <input type="text" class="form-control timepicker">
-
-                <div class="input-group-addon">
-                  <i class="fa fa-clock-o"></i>
-                </div>
-              </div>
-              <!-- /.input group -->
-            </div>
-            <!-- /.form group -->
-          </div>
-        </div>
-        <!-- /.box-body -->
-      </div>  --}}
       <!-- /.box -->
 
     </div>
@@ -310,3 +185,6 @@
 <!-- /.content -->
 </div>
 @endsection
+<script>
+
+</script>

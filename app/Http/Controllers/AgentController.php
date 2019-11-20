@@ -4,15 +4,21 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Agent;
+use App\Port;
+use App\Charges;
+
 class AgentController extends Controller
 {
     public function create(){
         $isEdit=false;
-        return view('setup.agent.create',compact($isEdit,'isEdit'));
+        $port=Port::with('port_charges.charges')->get();
+        $charges=Charges::all();
+        return view('setup.agent.create',compact($isEdit,'isEdit',$port,'port',$charges,'charges'));
     }
     public function index(){
-        $agent=agent::all();
-        return view('setup.agent.agent',compact($agent,'agent'));
+        $agent=Agent::all();
+        $port=Port::all();
+        return view('setup.agent.agent',compact($agent,'agent',$port,'port'));
     }
     public function store(Request $request){
         $request->validate([

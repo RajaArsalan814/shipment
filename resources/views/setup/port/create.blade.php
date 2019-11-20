@@ -35,12 +35,6 @@
         {{route('port.store')}}
         @endif
         " method="POST">
-        {{--  <div class="field_wrapper">
-                <div>
-                    <input type="text" name="field_name[]" value=""/>
-    <a href="javascript:void(0);" class="add_button"  title="Add field"><img style="height:20px" src="{{url('')}}/uploads/plus.png"/></a>
-                </div>
-            </div>  --}}
 
         <div class="field_wrapper">
             <div class="col-md-3">
@@ -80,9 +74,11 @@
                     </div>
             </div>
 
+            {{--  Import Charges  --}}
+
             <div class="col-md-3">
                     <div class="form-group">
-                        <label for="contact">Charges</label>
+                        <label for="contact">Import Charges</label>
                         @if($isEdit==true)
                         <select name="charges_id" id="" class="form-control">
                                 <option disabled="true" selected>Select Charge Type</option>
@@ -95,18 +91,51 @@
                                 @endforeach
                             </select>
                         @else
-                        <select name="charges_id" id="" class="form-control">
+                        <input type="text" class="form-control" name="amount[]">
+                        <input type="hidden" value="{{$charges_first->id}}" name="charges_id[]" >
+                        {{--  <select name="charges_id" id="" class="form-control">
                             <option disabled="true" selected>Select Charge Type</option>
                             @foreach ($charges as $item)
                             <option value="{{$item->id}}">{{$item->charge_type}}</option>
                             @endforeach
-                        </select>
+                        </select>  --}}
                         @endif
                         <span class="text-danger">{{$errors->first('charges_id') ?? null}}</span>
                     </div>
             </div>
 
+
+            {{--  Export Charges  --}}
+
             <div class="col-md-3">
+                <div class="form-group">
+                    <label for="contact">Export Charges</label>
+                    @if($isEdit==true)
+                    <select name="charges_id" id="" class="form-control">
+                            <option disabled="true" selected>Select Charge Type</option>
+                            @foreach ($charges as $item)
+                            <option
+                            @if($item->id==$port_charges->charges_id)
+                            selected
+                            @endif
+                            value="{{$item->id}}">{{$item->charge_type}}</option>
+                            @endforeach
+                        </select>
+                    @else
+                    <input type="text" class="form-control" name="amount[]">
+                    <input type="hidden"  value="{{$charges_second->id}}" name="charges_id[]" >
+                    {{--  <select name="charges_id" id="" class="form-control">
+                        <option disabled="true" selected>Select Charge Type</option>
+                        @foreach ($charges as $item)
+                        <option value="{{$item->id}}">{{$item->charge_type}}</option>
+                        @endforeach
+                    </select>  --}}
+                    @endif
+                    <span class="text-danger">{{$errors->first('charges_id') ?? null}}</span>
+                </div>
+        </div>
+
+            {{--  <div class="col-md-3">
                     <div class="form-group">
                         <label for="contact">Amount</label>
                         @if($isEdit==true)
@@ -116,7 +145,7 @@
                         @endif
                         <span class="text-danger">{{$errors->first('amount') ?? null}}</span>
                     </div>
-            </div>
+            </div>  --}}
                 {{--  <div class="col-md-3">
                     <br>
                         <div class="form-group">

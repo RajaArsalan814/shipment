@@ -47,8 +47,8 @@
                   <th>Code</th>
                   <th>Name</th>
                   <th>Address</th>
-                  <th>Charges</th>
-                  <th>Amount</th>
+                  <th>Import Charges</th>
+                  <th>Export Charges</th>
                   <th>Action</th>
                 </tr>
                 @foreach ($port as $item)
@@ -57,8 +57,9 @@
                   <td>{{$item->code}}</td>
                   <td>{{$item->name}}</td>
                   <td>{{$item->address}}</td>
-                  <td>{{$item->port_charges->charges->charge_type}}</td>
-                  <td>{{$item->port_charges->amount}}</td>
+                  @foreach($item->port_charges as $mydata)
+                  <td>{{$mydata->amount}}</td>
+                  @endforeach
                   <td><a href="{{route('port.edit',['id'=>$item->id])}}"> <i class="fa fa-edit edit"> </i> </a> </td>
                 </tr>
                 @endforeach
