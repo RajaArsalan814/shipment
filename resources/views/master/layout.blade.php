@@ -425,6 +425,7 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="{{route('container_lines')}}"> Container Lines</a></li>
+            <li><a href="{{route('container_type')}}"> Container Type</a></li>
             <li ><a href="{{route('charges')}}"> Charges</a></li>
             <li><a href="{{route('port')}}"> Port</a></li>
             <li><a href="{{route('agent')}}"> Agent</a></li>

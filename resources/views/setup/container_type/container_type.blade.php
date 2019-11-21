@@ -7,7 +7,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-            Container
+            Container Lines
         <small>preview of Container Lines </small>
       </h1>
       <ol class="breadcrumb">
@@ -27,14 +27,14 @@
         <div class="col-xs-12">
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Container </h3>
+              <h3 class="box-title">Container Type</h3>
 
               <div class="box-tools">
                 <div class="input-group input-group-md hidden-xs col-md-offset-7" style="width: 150px;">
                   {{--  <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">  --}}
 
                   <div class="input-group-btn">
-                    <a href="{{route('container.create')}}" class="btn btn-primary ">Create</a>
+                    <a href="{{route('container_type.create')}}" class="btn btn-primary ">Create</a>
                     {{--  <button type="submit" class="btn btn-primary">Create</button>  --}}
                   </div>
                 </div>
@@ -44,24 +44,15 @@
             <div class="box-body table-responsive no-padding">
               <table class="table table-hover">
                 <tr>
-                  <th>S : no</th>
-                  <th>Code</th>
-                  <th>Description</th>
-                  <th>Container Type </th>
-                  <th>Company</th>
-                  <th>Purchase From</th>
+                  <th>Id</th>
+                  <th>Size</th>
                   <th>Action</th>
                 </tr>
-                @foreach ($container as $item)
-
+                @foreach ($container_type as $item)
                 <tr>
-                    <td>{{$item->id}}</td>
-                    <td>{{$item->code}}</td>
-                    <td>{{$item->description}}</td>
-                    <td>{{$item->container_type->container_size}}</td>
-                    <td>{{$item->container_line->name}}</td>
-                    <td>{{$item->port->name}}</td>
-                    <td><a href="{{route('container.edit',['id'=>$item->id])}}"><i class="fa fa-edit edit"> </i></a> </td>
+                  <td>{{$item->id}}</td>
+                  <td>{{$item->container_size}}</td>
+                  <td><a href="{{route('container_type.edit',['id'=>$item->id])}}"> <i class="fa fa-edit edit"> </i> </a> </td>
                 </tr>
                 @endforeach
               </table>

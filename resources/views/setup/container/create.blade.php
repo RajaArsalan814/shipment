@@ -131,18 +131,37 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="code">Description:</label>
+                    @if($isEdit==true)
+                    <textarea name="description" id="" class="form-control" cols="30" rows="5">{{$container->description}}</textarea>
+                    @else
                     <textarea name="description" id="" class="form-control" cols="30" rows="5"></textarea>
+                    @endif
                 </div>
             </div>
 
             <div class="col-md-6">
                     <div class="form-group">
                         <label for="code">Container Type:</label>
+                        @if($isEdit==true)
                         <select name="container_type_id" id="" class="form-control">
-                            <option disabled="true" selected>Select Container Type</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                        </select>
+                          {{--  <option disabled="true" selected>Select Container Type</option>  --}}
+                          @foreach ($container_type as $item)
+                          <option
+                          @if($item->id==$container->container_type->id)
+                          selected
+                          @endif
+                          value="{{$item->id}}">{{$item->container_size}}</option>
+                      @endforeach
+                      </select>
+                        @else
+                        <select name="container_type_id" id="" class="form-control">
+                          <option disabled="true" selected>Select Container Type</option>
+                          @foreach ($container_type as $item)
+                          <option value="{{$item->id}}">{{$item->container_size}}</option>
+                      @endforeach
+                      </select>
+                        @endif
+
                     </div>
             </div>
             @csrf
@@ -160,21 +179,52 @@
             <div class="col-md-6">
                 <div class="form-group">
                             <label for="code">OwnerShip:</label>
+                            @if($isEdit==true)
                             <select name="company_id" id="" class="form-control">
-                                <option disabled="true" selected>Select Container Type</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                            </select>
+                              <option disabled="true" selected>Select Company</option>
+                              @foreach ($container_line as $item)
+                                  <option 
+                                  @if($item->id==$container->container_line->id)
+                                  selected
+                                  @endif
+                                  value="{{$item->id}}">{{$item->name}}</option>
+                              @endforeach
+                          </select>
+                            @else
+                            <select name="company_id" id="" class="form-control">
+                              <option disabled="true" selected>Select Company</option>
+                              @foreach ($container_line as $item)
+                                  <option
+                                  value="{{$item->id}}">{{$item->name}}</option>
+                              @endforeach
+                          </select>
+                            @endif
+                           
                 </div>
             </div>
             <div class="col-md-6">
                     <div class="form-group">
                             <label for="code">Purchase From:</label>
+                            @if($isEdit==true)
                             <select name="pur_port_id" id="" class="form-control">
-                                <option disabled="true" selected>Purchase From</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                            </select>
+                              <option disabled="true" selected>Select Port</option>
+                              @foreach ($port as $item)
+                                  <option 
+                                  @if($item->id==$container->port->id)
+                                  selected
+                                  @endif
+                                  value="{{$item->id}}">{{$item->name}}</option>
+                              @endforeach
+                          </select>
+                            @else
+                            <select name="pur_port_id" id="" class="form-control">
+                              <option disabled="true" selected>Select Port </option>
+                              @foreach ($port as $item)
+                                  <option value="{{$item->id}}">{{$item->name}}</option>
+                              @endforeach
+                          </select>
+                            @endif
+
                 </div>
                 </div>
             <div class="col-md-6">

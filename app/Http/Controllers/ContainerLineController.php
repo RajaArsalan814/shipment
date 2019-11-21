@@ -18,15 +18,15 @@ class ContainerLineController extends Controller
 
     public function store(Request $request){
 
-        $request->validate([
-            'code'        =>  'required',
-            'name'        =>  'required',
-            'address'     =>  'required',
-            'contact_no'  =>    'required|numeric',
-            'fax_no'      =>  'required',
-            'email'       =>  'required',
-            'url'         =>  'required',
-        ]);
+    // return $request->all();    // $request->validate([
+        //     'code'        =>  'required',
+        //     'name'        =>  'required',
+        //     'address'     =>  'required',
+        //     'contact_no'  =>    'required|numeric',
+        //     'fax_no'      =>  'required',
+        //     'email'       =>  'required',
+        //     'url'         =>  'required',
+        // ]);
         $container_line=new ContainerLine;
         $container_line->code=$request->code;
         $container_line->name=$request->name;
@@ -35,6 +35,7 @@ class ContainerLineController extends Controller
         $container_line->fax_no=$request->fax_no;
         $container_line->email=$request->email;
         $container_line->url=$request->url;
+        $container_line->address=$request->address;
         $container_line->user_id='1';
         $container_line->save();
         return redirect()->route('container_lines');
@@ -56,6 +57,7 @@ class ContainerLineController extends Controller
         $container_line->fax_no=$request->fax_no;
         $container_line->email=$request->email;
         $container_line->url=$request->url;
+        $container_line->address=$request->address;
         $container_line->user_id='2';
         $container_line->save();
         return redirect()->route('container_lines');

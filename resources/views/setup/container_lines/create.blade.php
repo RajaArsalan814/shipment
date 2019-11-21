@@ -39,25 +39,28 @@
                 <div class="form-group">
                     <label for="code">Code:</label>
                     @if($isEdit==true)
-                    <textarea name="code" id="" class="form-control" cols="30" rows="5">{{$container_line->code}}</textarea>
+                    <input name="code" type="text" class="form-control" value="{{$container_line->code}}">
                     @else
-                    <textarea name="code" id="" class="form-control" cols="30" rows="5"></textarea>
+                    <input name="code" type="text" class="form-control" >
                     @endif
-                    <span class="text-danger">{{$errors->first('code') ?? null}}</span>
+                    {{--  <span class="text-danger">{{$errors->first('code') ?? null}}</span>  --}}
                 </div>
             </div>
 
+
             <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="code">Address:</label>
-                        @if($isEdit==true)
-                    <textarea name="description" id="" class="form-control" cols="30"  rows="5">{{$container_line->address}}</textarea>
-                        @else
-                        <textarea name="description" id="" class="form-control" cols="30" rows="5"></textarea>
-                        @endif
-                        <span class="text-danger">{{$errors->first('description') ?? null}}</span>
-                    </div>
-            </div>
+              <div class="form-group">
+                  <label for="code">Name:</label>
+                  @if($isEdit==true)
+                  <input type="text" name="name" class="form-control" value="{{$container_line->name}}">
+                  @else
+                  <input  type="text" name="name" class="form-control">
+                  @endif
+                  {{--  <span class="text-danger">{{$errors->first('code') ?? null}}</span>  --}}
+              </div>
+          </div>
+
+        
             @csrf
             <div class="col-md-6">
                     <div class="form-group">
@@ -67,9 +70,9 @@
                         @else
                         <input type="text" name="contact_no" class="form-control" >
                         @endif
-                        <span class="text-danger">{{$errors->first('contact_no') ?? null}}</span>
-                    </div>
-                </div>
+                        {{--  <span class="text-danger">{{$errors->first('contact_no') ?? null}}</span>  --}}
+                      </div>
+                      </div>
             <div class="col-md-6">
                 <div class="form-group">
                         <label for="fax">Fax No:</label>
@@ -78,7 +81,7 @@
                         @else
                         <input type="text" name="fax_no" class="form-control" >
                         @endif
-                        <span class="text-danger">{{$errors->first('fax_no') ?? null}}</span>
+                        {{--  <span class="text-danger">{{$errors->first('fax_no') ?? null}}</span>  --}}
                 </div>
             </div>
             <div class="col-md-6">
@@ -89,7 +92,7 @@
                         @else
                         <input type="email" name="email" class="form-control" id="email">
                         @endif
-                        <span class="text-danger">{{$errors->first('email') ?? null}}</span>
+                        {{--  <span class="text-danger">{{$errors->first('email') ?? null}}</span>  --}}
                     </div>
                 </div>
             <div class="col-md-6">
@@ -100,9 +103,20 @@
                         @else
                         <input type="text" name="url" class="form-control" id="email">
                         @endif
-                        <span class="text-danger">{{$errors->first('url') ?? null}}</span>
+                        {{--  <span class="text-danger">{{$errors->first('url') ?? null}}</span>  --}}
                 </div>
             </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                  <label for="code">Address:</label>
+                  @if($isEdit==true)
+              <textarea name="address"  class="form-control" cols="30"  rows="5">{{$container_line->address}}</textarea>
+                  @else
+                  <textarea name="address"  class="form-control" cols="30" rows="5"></textarea>
+                  @endif
+                  {{--  <span class="text-danger">{{$errors->first('description') ?? null}}</span>  --}}
+              </div>
+      </div>
 
         <div class="col-md-3 col-md-offset-5">
             <a href="{{route('container_lines')}}" class="btn btn-primary">Back</a>

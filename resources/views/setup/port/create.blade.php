@@ -80,7 +80,8 @@
                     <div class="form-group">
                         <label for="contact">Import Charges</label>
                         @if($isEdit==true)
-                        <select name="charges_id" id="" class="form-control">
+                        <input type="text" class="form-control" name="amount[]" value="{{$port_charges->amount}}">
+                        {{--  <select name="charges_id" id="" class="form-control">
                                 <option disabled="true" selected>Select Charge Type</option>
                                 @foreach ($charges as $item)
                                 <option
@@ -89,7 +90,7 @@
                                 @endif
                                 value="{{$item->id}}">{{$item->charge_type}}</option>
                                 @endforeach
-                            </select>
+                            </select>  --}}
                         @else
                         <input type="text" class="form-control" name="amount[]">
                         <input type="hidden" value="{{$charges_first->id}}" name="charges_id[]" >
@@ -111,7 +112,8 @@
                 <div class="form-group">
                     <label for="contact">Export Charges</label>
                     @if($isEdit==true)
-                    <select name="charges_id" id="" class="form-control">
+                    <input type="text" class="form-control" name="amount[]" value="{{$port_charges->amount}}">
+                    {{--  <select name="charges_id" id="" class="form-control">
                             <option disabled="true" selected>Select Charge Type</option>
                             @foreach ($charges as $item)
                             <option
@@ -120,7 +122,7 @@
                             @endif
                             value="{{$item->id}}">{{$item->charge_type}}</option>
                             @endforeach
-                        </select>
+                        </select>  --}}
                     @else
                     <input type="text" class="form-control" name="amount[]">
                     <input type="hidden"  value="{{$charges_second->id}}" name="charges_id[]" >

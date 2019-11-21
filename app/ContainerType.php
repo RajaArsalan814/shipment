@@ -4,17 +4,13 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class ContainerLine extends Model
+class ContainerType extends Model
 {
-    protected $table='company';
+    protected $table='container_type';
 
     public function getDateFormat()
     {
         return 'Y-m-d H:i:s.u';
     }
-
-    
-
-    
     public $timestamps=false;
 }

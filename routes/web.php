@@ -18,6 +18,16 @@ Route::get('/', function () {
 Route::get('/home',function(){
         return view('home');
 })->name('home');
+
+
+Route::get('/container_type/create','ContainerTypeController@create')->name('container_type.create');
+Route::get('/container_type/index','ContainerTypeController@index')->name('container_type');
+Route::post('/container_type/store','ContainerTypeController@store')->name('container_type.store');
+Route::get('/container_type/edit/{id}','ContainerTypeController@edit')->name('container_type.edit');
+Route::post('/container_type/update/{id}','ContainerTypeController@update')->name('container_type.update');
+
+
+
 Route::get('/container_line/create','ContainerLineController@create')->name('container_line.create');
 Route::get('/container_line/index','ContainerLineController@index')->name('container_lines');
 Route::post('/container_line/store','ContainerLineController@store')->name('container_line.store');
