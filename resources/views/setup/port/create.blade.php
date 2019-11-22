@@ -112,11 +112,17 @@
                             <input type="text" class="form-control" name="amount[]" placeholder="Enter Charges">
                         </div>
 
-                        <div class="input-group control-group after-add-more">
-                            <input type="text" name="charges_id[]" class="form-control" placeholder="Enter Import Charges Here">
-                            <div class="input-group-btn"> 
+                        <div class="input-group control-group after-add-more ">
+                            <div class="col-md-3">
+                                <label for="">Charges</label>
                               <button class="btn btn-success add-more" type="button"><i class="glyphicon glyphicon-plus"></i> Import</button>
                             </div>
+                            {{--  <input type="text" name="charges_id[]" class="form-control" placeholder="Enter Import Charges Here">  --}}
+                        
+                            {{--  <div class="input-group-btn ">   --}}
+                              {{--  <label for="">Add More</label>  --}}
+                        
+                            {{--  </div>  --}}
                           </div>
                   
                   
@@ -124,10 +130,22 @@
                           <!-- Copy Fields -->
                           <div class="copy hide">
                             <div class="control-group input-group" style="margin-top:10px">
-                              <input type="text" name="charges_id[]" class="form-control" placeholder="Enter Charges Here">
+                                <div class="col-md-3">
+                                    <label for="">Import</label>
+                                <select name="charges_id[]" id="" class="form-control">
+                                    <option value="">Select Import Type</option>
+                                    @foreach ($charges_import as $item)
+                                    <option value="{{$item->id}}">{{$item->description}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                    <label for="">Charges</label>
+                                <input type="text" class="form-control" name="amount[]" placeholder="Enter Charges">
+                            </div>
                               <div class="input-group-btn"> 
                                 <button class="btn btn-danger remove" type="button"><i class="glyphicon glyphicon-remove"></i> Remove</button>
-                              </div>
+                            </div>
                             </div>
                           </div>
                       
@@ -151,18 +169,33 @@
                             </div>
 
                             <div class="input-group control-group export-after-add-more">
-                                <input type="text" name="charges_id[]" class="form-control" placeholder="Enter Export Charges Here">
-                                <div class="input-group-btn"> 
-                                  <button class="btn btn-success " type="button"><i class="glyphicon glyphicon-plus"></i> Export</button>
+                                <div class="col-md-3">   
+                                {{--  <input type="text" name="charges_id[]" class="form-control" placeholder="Enter Export Charges Here">  --}}
+                                {{--  <div class="input-group-btn">   --}}
+                                  <label for="">Export</label>
+                                  <button class="btn btn-success  export-add-more" type="button"><i class="glyphicon glyphicon-plus"></i> Export</button>
                                 </div>
-                              </div>
+                                </div>
+                              {{--  </div>  --}}
                       
                       
                       
                               <!-- Copy Fields -->
                               <div class="export-copy hide">
                                 <div class="export-control-group input-group" style="margin-top:10px">
-                                  <input type="text" name="charges_id[]" class="form-control" placeholder="Enter Export Charges Here">
+                                    <div class="col-md-3">
+                                        <label for="">Export</label>
+                                    <select name="charges_id[]" id="" class="form-control">
+                                        <option value="">Select Export Type</option>
+                                        @foreach ($charges_export as $item)
+                                                <option value="{{$item->id}}">{{$item->description}}</option>
+                                        @endforeach
+                                    </select>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label for="">Charges</label>
+                                    <input type="text" class="form-control" name="amount[]" placeholder="Enter Charges">
+                                </div>
                                   <div class="input-group-btn"> 
                                     <button class="btn btn-danger export-remove" type="button"><i class="glyphicon glyphicon-remove"></i> Remove</button>
                                   </div>
