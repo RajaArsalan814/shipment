@@ -9,10 +9,11 @@ use App\Charges;
 class PortController extends Controller
 {
     public function create(){
+
         $isEdit=false;
-        $charges_first=Charges::get()->first();
-        $charges_second=Charges::get()->last();
-        return view('setup.port.create',compact($isEdit,'isEdit',$charges_first,'charges_first',$charges_second,'charges_second'));
+        $charges_import=Charges::where('charge_type','I')->get();
+        $charges_export=Charges::where('charge_type','E')->get();
+        return view('setup.port.create',compact($isEdit,'isEdit',$charges_import,'charges_import',$charges_export,'charges_export'));
     }
 
     public function index(){
@@ -155,5 +156,12 @@ class PortController extends Controller
         $portcharges->amount=$request->amount;
         $portcharges->save();
         return redirect()->route('port');
+    }
+
+    public function port_view($id){
+        $port=Port::find($id);
+        $port_charges=PortCharges::with('charges')->where('port_id',$id)->get();
+        // $export_charges=PortCharges::where('port_id',$id)->get();
+        return view('setup.port.port_view',compact($port_charges,'port_charges',$port,'port'));
     }
 }

@@ -53,7 +53,6 @@
                   <th>Action</th>
                 </tr>
                 @foreach ($container as $item)
-
                 <tr>
                     <td>{{$item->id}}</td>
                     <td>{{$item->code}}</td>

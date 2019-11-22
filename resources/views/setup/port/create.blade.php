@@ -1,8 +1,14 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+{{-- <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script> --}}
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<style>
+    .tab-pane {
+        padding:20px;
+    }
+</style>
 @extends('master.layout')
 @section('content')
-{{--  @if ($errors->any())  --}}
-{{--  {{$errors->first()}}  --}}
-{{--  @endif  --}}
+
 <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">
@@ -74,89 +80,62 @@
                     </div>
             </div>
 
-            {{--  Import Charges  --}}
+        
 
-            <div class="col-md-3">
-                    <div class="form-group">
-                        <label for="contact">Import Charges</label>
-                        @if($isEdit==true)
-                        <input type="text" class="form-control" name="amount[]" value="{{$port_charges->amount}}">
-                        {{--  <select name="charges_id" id="" class="form-control">
-                                <option disabled="true" selected>Select Charge Type</option>
-                                @foreach ($charges as $item)
-                                <option
-                                @if($item->id==$port_charges->charges_id)
-                                selected
-                                @endif
-                                value="{{$item->id}}">{{$item->charge_type}}</option>
+           <div class="col-md-12">
+                        
+            <ul class="nav nav-tabs" id="myForm">
+                <li><a href="#one">Import</a></li>
+                <li><a href="#two">Export</a></li>
+            </ul>
+
+            {{-- <form action="" method="post"> --}}
+                <div class="tab-content">
+                <div class="tab-pane " id="one">
+                    <div class="row">
+                        <div class="col-md-3">
+                                <label for="">Import</label>
+                            <select name="charges_id[]" id="" class="form-control">
+                                <option value="">Select Import Type</option>
+                                @foreach ($charges_import as $item)
+                                <option value="{{$item->id}}">{{$item->description}}</option>
                                 @endforeach
-                            </select>  --}}
-                        @else
-                        <input type="text" class="form-control" name="amount[]">
-                        <input type="hidden" value="{{$charges_first->id}}" name="charges_id[]" >
-                        {{--  <select name="charges_id" id="" class="form-control">
-                            <option disabled="true" selected>Select Charge Type</option>
-                            @foreach ($charges as $item)
-                            <option value="{{$item->id}}">{{$item->charge_type}}</option>
-                            @endforeach
-                        </select>  --}}
-                        @endif
-                        <span class="text-danger">{{$errors->first('charges_id') ?? null}}</span>
-                    </div>
-            </div>
-
-
-            {{--  Export Charges  --}}
-
-            <div class="col-md-3">
-                <div class="form-group">
-                    <label for="contact">Export Charges</label>
-                    @if($isEdit==true)
-                    <input type="text" class="form-control" name="amount[]" value="{{$port_charges->amount}}">
-                    {{--  <select name="charges_id" id="" class="form-control">
-                            <option disabled="true" selected>Select Charge Type</option>
-                            @foreach ($charges as $item)
-                            <option
-                            @if($item->id==$port_charges->charges_id)
-                            selected
-                            @endif
-                            value="{{$item->id}}">{{$item->charge_type}}</option>
-                            @endforeach
-                        </select>  --}}
-                    @else
-                    <input type="text" class="form-control" name="amount[]">
-                    <input type="hidden"  value="{{$charges_second->id}}" name="charges_id[]" >
-                    {{--  <select name="charges_id" id="" class="form-control">
-                        <option disabled="true" selected>Select Charge Type</option>
-                        @foreach ($charges as $item)
-                        <option value="{{$item->id}}">{{$item->charge_type}}</option>
-                        @endforeach
-                    </select>  --}}
-                    @endif
-                    <span class="text-danger">{{$errors->first('charges_id') ?? null}}</span>
-                </div>
-        </div>
-
-            {{--  <div class="col-md-3">
-                    <div class="form-group">
-                        <label for="contact">Amount</label>
-                        @if($isEdit==true)
-                        <input type="text" name="amount" class="form-control" value="{{$port->amount}}" >
-                        @else
-                        <input type="text" name="amount" class="form-control" >
-                        @endif
-                        <span class="text-danger">{{$errors->first('amount') ?? null}}</span>
-                    </div>
-            </div>  --}}
-                {{--  <div class="col-md-3">
-                    <br>
-                        <div class="form-group">
-                                <label for="contact">Add more:</label>
-                <a href="javascript:void(0);" class="add_button"   title="Add field"><img style="height:20px" src="{{url('')}}/uploads/plus.png"/></a>
+                            </select>
                         </div>
-                </div>  --}}
-            </div>
+                        <div class="col-md-3">
+                                <label for="">Charges</label>
+                            <input type="text" class="form-control" name="amount[]" placeholder="Enter Charges">
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane" id="two">
+                        <div class="row">
+                                <div class="col-md-3">
+                                    <label for="">Export</label>
+                                <select name="charges_id[]" id="" class="form-control">
+                                    <option value="">Select Export Type</option>
+                                    @foreach ($charges_export as $item)
+                                            <option value="{{$item->id}}">{{$item->description}}</option>
+                                    @endforeach
+                                </select>
+                                </div>
+                                <div class="col-md-3">
+                                <label for="">Charges</label>
+                                <input type="text" class="form-control" name="amount[]" placeholder="Enter Charges">
+                                </div>
+                        </div>
+                </div>
+                <div class="tab-pane" id="three">
+                    <button type="submit" class="btn btn-success">Submit</button>
+                </div>    
+                </div>
+            {{-- </form> --}}
+           </div>
 
+  
+
+            </div>
+<br><br>
         <div class="col-md-3 col-md-offset-3">
             <a href="{{route('port')}}" class="btn btn-primary">Back</a>
             &nbsp;&nbsp;&nbsp;&nbsp;
@@ -185,30 +164,10 @@
 </section>
 <!-- /.content -->
 </div>
-@endsection
-{{--  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script type="text/javascript">
-    $(document).ready(function(){
-        var maxField = 10; //Input fields increment limitation
-        var addButton = $('.add_button'); //Add button selector
-        var wrapper = $('.field_wrapper'); //Input field wrapper
-        var fieldHTML = '<div ><div class="col-md-4" "><label for="code">Code:</label><input type="text" name="code[]" class="form-control"></div><div class="col-md-4" "><label for="description">Description:</label><input type="text" name="description[]" class="form-control"></div><div class="col-md-4" "><label for="charge">Charge Type:</label><input type="text" name="charge_type[]" class="form-control"></div><a href="javascript:void(0);" class="remove_button"><img style="height:20px;margin-top:20px;margin-left:20px;" src="{{url('')}}/uploads/crose.png"/></a></div>'; //New input field html
-        var x = 1; //Initial field counter is 1
-
-        //Once add button is clicked
-        $(addButton).click(function(){
-            //Check maximum number of input fields
-            if(x < maxField){
-                x++; //Increment field counter
-                $(wrapper).append(fieldHTML); //Add field html
-            }
-        });
-
-        //Once remove button is clicked
-        $(wrapper).on('click', '.remove_button', function(e){
+<script>
+        $('#myForm a').click(function (e) {
             e.preventDefault();
-            $(this).parent('div').remove(); //Remove field html
-            x--; //Decrement field counter
-        });
-    });
-    </script>  --}}
+            $(this).tab('show');
+          })
+    </script>
+@endsection

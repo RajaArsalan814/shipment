@@ -47,8 +47,9 @@
                   <th>Code</th>
                   <th>Name</th>
                   <th>Address</th>
-                  <th>Import Charges</th>
-                  <th>Export Charges</th>
+                  <th>View More Details</th>
+                  {{-- <th>Import Charges</th>
+                  <th>Export Charges</th> --}}
                   <th>Action</th>
                 </tr>
                 @foreach ($port as $item)
@@ -57,9 +58,10 @@
                   <td>{{$item->code}}</td>
                   <td>{{$item->name}}</td>
                   <td>{{$item->address}}</td>
-                  @foreach($item->port_charges as $mydata)
+                  {{-- @foreach($item->port_charges as $mydata)
                   <td>{{$mydata->amount}}</td>
-                  @endforeach
+                  @endforeach --}}
+                  <td><a href="{{route('port_view',['id'=>$item->id])}}"> <i class="fa fa-file file"> </i> </a> </td>
                   <td><a href="{{route('port.edit',['id'=>$item->id])}}"> <i class="fa fa-edit edit"> </i> </a> </td>
                 </tr>
                 @endforeach

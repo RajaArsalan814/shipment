@@ -58,7 +58,7 @@ Route::get('/port/index','PortController@index')->name('port');
 Route::post('/port/store','PortController@store')->name('port.store');
 Route::get('/port/edit/{id}','PortController@edit')->name('port.edit');
 Route::post('/port/update/{id}','PortController@update')->name('port.update');
-
+Route::get('/port/view/{id}','PortController@port_view')->name('port_view');
 
 Route::get('/forwarder/create','ForwarderController@create')->name('forwarder.create');
 Route::get('/forwarder/index','ForwarderController@index')->name('forwarder');
