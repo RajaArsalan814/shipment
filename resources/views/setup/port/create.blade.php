@@ -117,12 +117,7 @@
                                 <label for="">Charges</label>
                               <button class="btn btn-success add-more" type="button"><i class="glyphicon glyphicon-plus"></i> Import</button>
                             </div>
-                            {{--  <input type="text" name="charges_id[]" class="form-control" placeholder="Enter Import Charges Here">  --}}
                         
-                            {{--  <div class="input-group-btn ">   --}}
-                              {{--  <label for="">Add More</label>  --}}
-                        
-                            {{--  </div>  --}}
                           </div>
                   
                   
@@ -170,13 +165,10 @@
 
                             <div class="input-group control-group export-after-add-more">
                                 <div class="col-md-3">   
-                                {{--  <input type="text" name="charges_id[]" class="form-control" placeholder="Enter Export Charges Here">  --}}
-                                {{--  <div class="input-group-btn">   --}}
                                   <label for="">Export</label>
                                   <button class="btn btn-success  export-add-more" type="button"><i class="glyphicon glyphicon-plus"></i> Export</button>
                                 </div>
                                 </div>
-                              {{--  </div>  --}}
                       
                       
                       
