@@ -1,6 +1,8 @@
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-{{-- <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script> --}}
+{{-- <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"> --}}
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
 <style>
     .tab-pane {
         padding:20px;
@@ -80,7 +82,10 @@
                     </div>
             </div>
 
-        
+          
+           
+
+
 
            <div class="col-md-12">
                         
@@ -106,9 +111,30 @@
                                 <label for="">Charges</label>
                             <input type="text" class="form-control" name="amount[]" placeholder="Enter Charges">
                         </div>
+
+                        <div class="input-group control-group after-add-more">
+                            <input type="text" name="charges_id[]" class="form-control" placeholder="Enter Import Charges Here">
+                            <div class="input-group-btn"> 
+                              <button class="btn btn-success add-more" type="button"><i class="glyphicon glyphicon-plus"></i> Import</button>
+                            </div>
+                          </div>
+                  
+                  
+                  
+                          <!-- Copy Fields -->
+                          <div class="copy hide">
+                            <div class="control-group input-group" style="margin-top:10px">
+                              <input type="text" name="charges_id[]" class="form-control" placeholder="Enter Charges Here">
+                              <div class="input-group-btn"> 
+                                <button class="btn btn-danger remove" type="button"><i class="glyphicon glyphicon-remove"></i> Remove</button>
+                              </div>
+                            </div>
+                          </div>
+                      
                     </div>
+                
                 </div>
-                <div class="tab-pane" id="two">
+                    <div class="tab-pane" id="two">
                         <div class="row">
                                 <div class="col-md-3">
                                     <label for="">Export</label>
@@ -120,11 +146,30 @@
                                 </select>
                                 </div>
                                 <div class="col-md-3">
-                                <label for="">Charges</label>
+                                    <label for="">Charges</label>
                                 <input type="text" class="form-control" name="amount[]" placeholder="Enter Charges">
+                            </div>
+
+                            <div class="input-group control-group export-after-add-more">
+                                <input type="text" name="charges_id[]" class="form-control" placeholder="Enter Export Charges Here">
+                                <div class="input-group-btn"> 
+                                  <button class="btn btn-success " type="button"><i class="glyphicon glyphicon-plus"></i> Export</button>
                                 </div>
+                              </div>
+                      
+                      
+                      
+                              <!-- Copy Fields -->
+                              <div class="export-copy hide">
+                                <div class="export-control-group input-group" style="margin-top:10px">
+                                  <input type="text" name="charges_id[]" class="form-control" placeholder="Enter Export Charges Here">
+                                  <div class="input-group-btn"> 
+                                    <button class="btn btn-danger export-remove" type="button"><i class="glyphicon glyphicon-remove"></i> Remove</button>
+                                  </div>
+                                </div>
+                              </div>
                         </div>
-                </div>
+                    </div>
                 <div class="tab-pane" id="three">
                     <button type="submit" class="btn btn-success">Submit</button>
                 </div>    
@@ -149,6 +194,10 @@
         </div>
         </form>
         </div>
+    </div>
+
+
+</div>
         <!-- /.box-body -->
       </div>
       <!-- /.box -->
@@ -165,6 +214,36 @@
 <!-- /.content -->
 </div>
 <script>
+     
+
+    $(document).ready(function() {
+
+
+      $(".add-more").click(function(){ 
+          var html = $(".copy").html();
+          $(".after-add-more").after(html);
+      });
+
+
+      $("body").on("click",".remove",function(){ 
+          $(this).parents(".control-group").remove();
+      });
+
+
+      
+      $(".export-add-more").click(function(){ 
+          var html = $(".export-copy").html();
+          $(".export-after-add-more").after(html);
+      });
+
+
+      $("body").on("click",".export-remove",function(){ 
+          $(this).parents(".export-control-group").remove();
+      });
+
+
+    });
+
         $('#myForm a').click(function (e) {
             e.preventDefault();
             $(this).tab('show');
