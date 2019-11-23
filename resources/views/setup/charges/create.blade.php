@@ -72,9 +72,18 @@
                     <div class="form-group">
                         <label for="contact">Charge Type:</label>
                         @if($isEdit==true)
-                        <input type="text" name="charge_type" class="form-control" value="{{$charges->charge_type}}" >
+                        <select name="charge_type" class="form-control">
+                            <option disabled="true" selected >Select Charge Type</option>
+                            <option value="I"  >Import</option>
+                            <option  value="E" >Export</option>
+                        </select>
+                        {{-- <input type="text" name="charge_type" class="form-control" value="{{$charges->charge_type}}" > --}}
                         @else
-                        <input type="text" name="charge_type" class="form-control" >
+                        <select name="charge_type" class="form-control">
+                            <option disabled="true" selected >Select Charge Type</option>
+                            <option value="I"  >Import</option>
+                            <option  value="E" >Export</option>
+                        </select>
                         @endif
                         <span class="text-danger">{{$errors->first('charge_type') ?? null}}</span>
                     </div>

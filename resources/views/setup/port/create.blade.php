@@ -82,13 +82,8 @@
                     </div>
             </div>
 
-          
-           
-
-
-
            <div class="col-md-12">
-                        
+
             <ul class="nav nav-tabs" id="myForm">
                 <li><a href="#one">Import</a></li>
                 <li><a href="#two">Export</a></li>
@@ -117,11 +112,11 @@
                                 <label for="">Charges</label>
                               <button class="btn btn-success add-more" type="button"><i class="glyphicon glyphicon-plus"></i> Import</button>
                             </div>
-                        
+
                           </div>
-                  
-                  
-                  
+
+
+
                           <!-- Copy Fields -->
                           <div class="copy hide">
                             <div class="control-group input-group" style="margin-top:10px">
@@ -138,14 +133,14 @@
                                     <label for="">Charges</label>
                                 <input type="text" class="form-control" name="amount[]" placeholder="Enter Charges">
                             </div>
-                              <div class="input-group-btn"> 
+                              <div class="input-group-btn">
                                 <button class="btn btn-danger remove" type="button"><i class="glyphicon glyphicon-remove"></i> Remove</button>
                             </div>
                             </div>
                           </div>
-                      
+
                     </div>
-                
+
                 </div>
                     <div class="tab-pane" id="two">
                         <div class="row">
@@ -164,14 +159,14 @@
                             </div>
 
                             <div class="input-group control-group export-after-add-more">
-                                <div class="col-md-3">   
+                                <div class="col-md-3">
                                   <label for="">Export</label>
                                   <button class="btn btn-success  export-add-more" type="button"><i class="glyphicon glyphicon-plus"></i> Export</button>
                                 </div>
                                 </div>
-                      
-                      
-                      
+
+
+
                               <!-- Copy Fields -->
                               <div class="export-copy hide">
                                 <div class="export-control-group input-group" style="margin-top:10px">
@@ -188,21 +183,20 @@
                                         <label for="">Charges</label>
                                     <input type="text" class="form-control" name="amount[]" placeholder="Enter Charges">
                                 </div>
-                                  <div class="input-group-btn"> 
+                                  <div class="input-group-btn">
                                     <button class="btn btn-danger export-remove" type="button"><i class="glyphicon glyphicon-remove"></i> Remove</button>
-                                  </div>
+                                </div>
                                 </div>
                               </div>
                         </div>
                     </div>
                 <div class="tab-pane" id="three">
                     <button type="submit" class="btn btn-success">Submit</button>
-                </div>    
                 </div>
-            {{-- </form> --}}
+                </div>
            </div>
 
-  
+
 
             </div>
 <br><br>
@@ -223,46 +217,39 @@
 
 
 </div>
-        <!-- /.box-body -->
+
       </div>
-      <!-- /.box -->
-      <!-- /.box -->
 
     </div>
-    <!-- /.col (left) -->
-
-    <!-- /.col (right) -->
   </div>
-  <!-- /.row -->
 
 </section>
-<!-- /.content -->
 </div>
 <script>
-     
+
 
     $(document).ready(function() {
 
 
-      $(".add-more").click(function(){ 
+      $(".add-more").click(function(){
           var html = $(".copy").html();
           $(".after-add-more").after(html);
       });
 
 
-      $("body").on("click",".remove",function(){ 
+      $("body").on("click",".remove",function(){
           $(this).parents(".control-group").remove();
       });
 
 
-      
-      $(".export-add-more").click(function(){ 
+
+      $(".export-add-more").click(function(){
           var html = $(".export-copy").html();
           $(".export-after-add-more").after(html);
       });
 
 
-      $("body").on("click",".export-remove",function(){ 
+      $("body").on("click",".export-remove",function(){
           $(this).parents(".export-control-group").remove();
       });
 

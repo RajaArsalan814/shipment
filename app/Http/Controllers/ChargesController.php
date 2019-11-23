@@ -24,28 +24,6 @@ class ChargesController extends Controller
             'description'     =>  'required',
             'charge_type'  =>    'required',
         ]);
-//         $data = $request->all();
-// $finalArray = array();
-// foreach($data as $key=>$value){
-//    array_push($finalArray, array(
-//     'code'=>$value['code'],
-//     'description'=>$value['description'],
-//     'charge_type'=>$value['charge_type'],
-//    ));
-// }
-
-// Charesg::insert($finalArray);
-        // $codes=$request->code;
-        // $description=$request->description;
-        // $charge_type=$request->charge_type;
-        // foreach($codes as $code){
-        //     $data=array(
-        //         'code'         =>   $code,
-        //         'description'  =>   $request->description,
-        //         'charge_type'  =>   $request->charge_type,
-        //     );
-        // }
-        // Charges::create($data);
         $charges=new Charges;
         $charges->code=$request->code;
         $charges->description=$request->description;

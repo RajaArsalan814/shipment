@@ -54,7 +54,14 @@
                   <td>{{$item->id}}</td>
                   <td>{{$item->code}}</td>
                   <td>{{$item->description}}</td>
-                  <td>{{$item->charge_type}}</td>
+                  <td>
+                      @if($item->charge_type=='I')
+                        Import
+                        @else
+                        Export
+                        @endif
+
+                    </td>
                   <td><a href="{{route('charges.edit',['id'=>$item->id])}}"> <i class="fa fa-edit edit"> </i> </a> </td>
                 </tr>
                 @endforeach
