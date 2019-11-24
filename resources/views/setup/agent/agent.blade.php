@@ -46,10 +46,10 @@
                 <tr>
                   <th>S : no</th>
                   <th>Code</th>
-                  <th>Description</th>
-                  <th>agent Type Id</th>
-                  <th>Conpany</th>
-                  <th>Per Port Id</th>
+                  <th>Name</th>
+                  <th>Address</th>
+                  <th>Port</th>
+                  <th>View More Details</th>
                   <th>Action</th>
                 </tr>
                 @foreach ($agent as $item)
@@ -57,11 +57,11 @@
                 <tr>
                     <td>{{$item->id}}</td>
                     <td>{{$item->code}}</td>
-                    <td>{{$item->description}}</td>
-                    <td>{{$item->agent_type_id}}</td>
-                    <td>{{$item->company_id}}</td>
-                    <td>{{$item->pur_port_id}}</td>
-                    <td><a><i class="fa fa-edit edit"> </i></a> </td>
+                    <td>{{$item->name}}</td>
+                    <td>{{$item->address}}</td>
+                    <td>{{$item->ports->name}}</td>
+                    <td><a href="{{route('agent_view',['id'=>$item->id])}}"> <i class="fa fa-file file"> </i> </a> </td>
+                    <td><a href="{{route('agent.edit',['id'=>$item->id])}}"> <i class="fa fa-edit edit"> </i> </a> </td>
                 </tr>
                 @endforeach
               </table>

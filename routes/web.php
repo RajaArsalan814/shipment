@@ -83,6 +83,7 @@ Route::get('/agent/index','AgentController@index')->name('agent');
 Route::post('/agent/store','AgentController@store')->name('agent.store');
 Route::get('/agent/edit/{id}','AgentController@edit')->name('agent.edit');
 Route::post('/agent/update/{id}','AgentController@update')->name('agent.update');
+Route::get('/agent/view/{id}','AgentController@agent_view')->name('agent_view');
 
 
 Route::get('/vessel/create','VesselController@create')->name('vessel.create');
