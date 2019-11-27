@@ -6,37 +6,59 @@ use Illuminate\Http\Request;
 use App\Agent;
 use App\Port;
 use App\Charges;
-
+use App\AgentCharges;
 class AgentController extends Controller
 {
     public function create(){
         $isEdit=false;
-        $port=Port::with('port_charges.charges')->get();
-        $charges=Charges::all();
-        return view('setup.agent.create',compact($isEdit,'isEdit',$port,'port',$charges,'charges'));
+        $charges_import=Charges::where('charge_type','I')->get();
+        $charges_export=Charges::where('charge_type','E')->get();
+        $port=Port::get();
+        $charges=Charges::get();
+        return view('setup.agent.create',compact($isEdit,'isEdit',$port,'port',$charges,'charges',$charges_import,'charges_import',$charges_export,'charges_export'));
     }
     public function index(){
-        $agent=Agent::all();
-        $port=Port::all();
-        return view('setup.agent.agent',compact($agent,'agent',$port,'port'));
+        // $agent=Agent::all();
+        // $port=Port::all();
+       $agent=Agent::with('agent_charges','ports')->get();
+        return view('setup.agent.agent',compact($agent,'agent',$agent,'agent'));
     }
     public function store(Request $request){
-        $request->validate([
-            'code'               =>  'required',
-            'description'        =>  'required',
-            'cost'               =>  'required|numeric',
-            'supplier'           =>  'required',
-        ]);
+        // return $request->all();
+        // $request->validate([
+        //     'code'               =>  'required',
+        //     'description'        =>  'required',
+        //     'cost'               =>  'required|numeric',
+        //     'supplier'           =>  'required',
+        // ]);
 
         $agent=new Agent;
         $agent->code=$request->code;
-        $agent->description=$request->description;
-        $agent->agent_type_id=$request->agent_type_id;
-        $agent->cost=$request->cost;
-        $agent->company_id=$request->company_id;
-        $agent->pur_port_id=$request->pur_port_id;
-        $agent->supplier=$request->supplier;
+        $agent->name=$request->name;
+        $agent->address=$request->address;
+        $agent->contact_no=$request->contact_no;
+        $agent->fax_no=$request->fax_no;
+        $agent->email=$request->email;
+        $agent->contact_person=$request->contact_person;
+        $agent->user_name=$request->user_name;
+        $agent->port_id=$request->port_id;
+        $charges=$request->charges_id;
+        $amount=$request->amount;
         $agent->save();
+
+
+        if(count($request->charges_id) > 0)
+        {
+            foreach($request->charges_id as $item=>$v){
+                $data2=array(
+                    'agent_id'=>$agent->id,
+                    'charges_id'=>$request->charges_id[$item],
+                    'amount'=>$request->amount[$item],
+                );
+                AgentCharges::insert($data2);
+
+            }
+        }
         return redirect()->route('agent');
     }
 
@@ -62,5 +84,17 @@ class AgentController extends Controller
         $agent->user_id='1';
         $agent->save();
         return redirect()->route('agent');
+    }
+
+    public function agent_view($id){
+
+        // $port=Port::find($id);
+        // $port_charges=PortCharges::with('charges')->where('port_id',$id)->get();
+
+
+        $agent=Agent::with('ports')->find($id);
+        $agent_charges=AgentCharges::with('charges')->where('agent_id',$id)->get();
+        // $export_charges=PortCharges::where('port_id',$id)->get();
+        return view('setup.agent.agent_view',compact($agent_charges,'agent_charges',$agent,'agent'));
     }
 }

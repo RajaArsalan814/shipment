@@ -44,8 +44,8 @@
                 <tr>
                   <th> S : no </th>
                   <th>Code</th>
-                  <th>Description</th>
-                  <th>Charger Type</th>
+                  <th>Name</th>
+                  <th>Owner</th>
                   <th>Action</th>
                 </tr>
                 @foreach ($vessel as $item)

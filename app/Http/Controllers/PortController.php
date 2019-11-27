@@ -26,12 +26,12 @@ class PortController extends Controller
 
         // return $request->all();
 
-        $request->validate([
-            'code'        =>  'required',
-            'name'     =>  'required',
-            'address'  =>    'required',
-            'amount'  =>    'required',
-            ]);
+        // $request->validate([
+        //     'code'        =>  'required',
+        //     'name'     =>  'required',
+        //     'address'  =>    'required',
+        //     'amount'  =>    'required',
+        //     ]);
 
         $port=new Port;
         $port->code=$request->code;
