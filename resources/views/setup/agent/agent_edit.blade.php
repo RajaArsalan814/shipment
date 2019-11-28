@@ -39,26 +39,21 @@
         <div class="box-body">
 
         <form action="
-        {{route('agent.store')}}
+        {{route('agent.update',['id'=>$agent->id])}}
         " method="POST">
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="code">Code:</label>
-                    <input type="text" name="code" class="form-control" >
+                    <input type="text" name="code"  value="{{$agent->code}}" class="form-control" >
                     <span class="text-danger">{{$errors->first('code') ?? null}}</span>
                 </div>
             </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label for="code">Address:</label>
-                    <textarea name="address" id="" class="form-control" cols="30" rows="5"></textarea>
-                </div>
-            </div>
+         
 
             <div class="col-md-6">
                     <div class="form-group">
                         <label for="code">Name:</label>
-                        <input type="text" name="name" class="form-control" >
+                        <input type="text" name="name" class="form-control"  value="{{$agent->name}}">
                         <span class="text-danger">{{$errors->first('name') ?? null}}</span>
                     </div>
                 </div>
@@ -77,28 +72,28 @@
             <div class="col-md-6">
                     <div class="form-group">
                         <label for="contact">Contact No:</label>
-                        <input type="text" name="contact_no" class="form-control" >
+                        <input type="text" name="contact_no" class="form-control" value="{{$agent->contact_no}}">
                         <span class="text-danger">{{$errors->first('contact_no') ?? null}}</span>
                     </div>
             </div>
             <div class="col-md-6">
                     <div class="form-group">
                         <label for="contact">Fax No:</label>
-                        <input type="text" name="fax_no" class="form-control" >
+                        <input type="text" name="fax_no" class="form-control"  value="{{$agent->fax_no}}">
                         <span class="text-danger">{{$errors->first('fax_no') ?? null}}</span>
                     </div>
             </div>
             <div class="col-md-6">
                     <div class="form-group">
                         <label for="contact">Email:</label>
-                        <input type="text" name="email" class="form-control" >
+                        <input type="text" name="email" class="form-control" value="{{$agent->email}}">
                         <span class="text-danger">{{$errors->first('email') ?? null}}</span>
                     </div>
             </div>
             <div class="col-md-6">
                     <div class="form-group">
                         <label for="contact">Contact Person:</label>
-                        <input type="text" name="contact_person" class="form-control" >
+                        <input type="text" name="contact_person" class="form-control" value="{{$agent->contact_person}}">
                         <span class="text-danger">{{$errors->first('contact_person') ?? null}}</span>
                     </div>
             </div>
@@ -107,22 +102,32 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="contact">User Name:</label>
-                    <input type="text" name="user_name" class="form-control" >
+                    <input type="text" name="user_name" class="form-control" value="{{$agent->user_name}}">
                     <span class="text-danger">{{$errors->first('user_name') ?? null}}</span>
                 </div>
         </div>
+
         <div class="col-md-6">
             <div class="form-group">
                         <label for="code">Port:</label>
                         <select name="port_id" class="form-control">
                             <option disabled="true" selected>Select Port</option>
                             @foreach ($port as $item)
-                            <option value="{{$item->id}}">{{$item->name}}</option>
+                            <option 
+                            @if($item->id == $agent->port_id)
+                            selected
+                            @endif
+                            value="{{$item->id}}">{{$item->name}}</option>
                             @endforeach
                         </select>
             </div>
         </div>
-
+   <div class="col-md-12">
+                <div class="form-group">
+                    <label for="code">Address:</label>
+                    <textarea name="address" id="" class="form-control" cols="30" rows="3">{{$agent->address}}</textarea>
+                </div>
+            </div>
 
         <div class="col-md-12">
 
@@ -244,9 +249,7 @@
                     <a href="{{route('agent')}}" class="btn btn-primary">Back</a>
                     &nbsp;&nbsp;&nbsp;&nbsp;
                     <button type="submit" class="btn btn-primary ">
-                        
-                            Create
-                        
+                            Update
                     </button>
                 </div>
         </form>

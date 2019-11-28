@@ -128,16 +128,7 @@
                     <span class="text-danger">{{$errors->first('code') ?? null}}</span>
                 </div>
             </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label for="code">Description:</label>
-                    @if($isEdit==true)
-                    <textarea name="description" id="" class="form-control" cols="30" rows="5">{{$container->description}}</textarea>
-                    @else
-                    <textarea name="description" id="" class="form-control" cols="30" rows="5"></textarea>
-                    @endif
-                </div>
-            </div>
+
 
             <div class="col-md-6">
                     <div class="form-group">
@@ -239,6 +230,16 @@
 
                 </div>
             </div>
+            <div class="col-md-12">
+              <div class="form-group">
+                  <label for="code">Description:</label>
+                  @if($isEdit==true)
+                  <textarea name="description" id="" class="form-control" cols="30" rows="3">{{$container->description}}</textarea>
+                  @else
+                  <textarea name="description" id="" class="form-control" cols="30" rows="3"></textarea>
+                  @endif
+              </div>
+          </div>
             <div class="col-md-3 col-md-offset-5">
                     <a href="{{route('container')}}" class="btn btn-primary">Back</a>
                     &nbsp;&nbsp;&nbsp;&nbsp;

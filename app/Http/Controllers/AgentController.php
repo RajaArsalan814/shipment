@@ -10,12 +10,11 @@ use App\AgentCharges;
 class AgentController extends Controller
 {
     public function create(){
-        $isEdit=false;
         $charges_import=Charges::where('charge_type','I')->get();
         $charges_export=Charges::where('charge_type','E')->get();
         $port=Port::get();
         $charges=Charges::get();
-        return view('setup.agent.create',compact($isEdit,'isEdit',$port,'port',$charges,'charges',$charges_import,'charges_import',$charges_export,'charges_export'));
+        return view('setup.agent.create',compact($port,'port',$charges,'charges',$charges_import,'charges_import',$charges_export,'charges_export'));
     }
     public function index(){
         // $agent=Agent::all();
@@ -63,18 +62,20 @@ class AgentController extends Controller
     }
 
     public function edit($id){
-        $isEdit=true;
+        
         $agent=Agent::find($id);
-        return view('setup.agent.create',compact($agent,'agent',$isEdit,'isEdit'));
+        $charges_import=Charges::where('charge_type','I')->get();
+        $charges_export=Charges::where('charge_type','E')->get();
+        $agent_charges=AgentCharges::where('agent_id',$id)->first();
+        $charges=Charges::all();
+        $port=Port::all();
+        return view('setup.agent.agent_edit',compact($charges,'charges',$agent,'agent',$agent_charges,'agent_charges',
+        $charges_import,'charges_import',$charges_export,'charges_export',$port,'port'));
+    
     }
 
     public function update(Request $request,$id){
-        $request->validate([
-            'code'               =>  'required',
-            'description'        =>  'required',
-            'cost'               =>  'required|numeric',
-            'supplier'           =>  'required',
-        ]);
+    
         $agent=Agent::find($id);
         $agent->name=$request->name;
         $agent->address=$request->address;
@@ -82,7 +83,25 @@ class AgentController extends Controller
         $agent->code=$request->code;
         $agent->contact_person=$request->contact_person;
         $agent->user_id='1';
-        $agent->save();
+        $agent->update();
+     
+        $agent_charges_delete=AgentCharges::where('agent_id',$agent->id)->delete();
+      
+        if($agent){
+            if(count($request->charges_id) > 0)
+            {
+                foreach($request->charges_id as $item=>$v){
+                    $data2=array(
+                        'agent_id'=>$agent->id,
+                        'charges_id'=>$request->charges_id[$item],
+                        'amount'=>$request->amount[$item],
+                    );
+                    AgentCharges::insert($data2);
+    
+                }
+            }
+        }
+     
         return redirect()->route('agent');
     }
 

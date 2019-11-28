@@ -10,10 +10,9 @@ class PortController extends Controller
 {
     public function create(){
 
-        $isEdit=false;
         $charges_import=Charges::where('charge_type','I')->get();
         $charges_export=Charges::where('charge_type','E')->get();
-        return view('setup.port.create',compact($isEdit,'isEdit',$charges_import,'charges_import',$charges_export,'charges_export'));
+        return view('setup.port.create',compact($charges_import,'charges_import',$charges_export,'charges_export'));
     }
 
     public function index(){
@@ -131,30 +130,39 @@ class PortController extends Controller
     }
 
     public function edit($id){
-        $isEdit=true;
         $port=Port::find($id);
+        $charges_import=Charges::where('charge_type','I')->get();
+        $charges_export=Charges::where('charge_type','E')->get();
         $port_charges=PortCharges::where('port_id',$id)->first();
         $charges=Charges::all();
-        return view('setup.port.create',compact($isEdit,'isEdit',$charges,'charges',$port,'port',$port_charges,'port_charges'));
+        return view('setup.port.port_edit',compact($charges,'charges',$port,'port',$port_charges,'port_charges',
+        $charges_import,'charges_import',$charges_export,'charges_export'));
     }
 
     public function update(Request $request,$id){
-        $request->validate([
-            'code'        =>  'required',
-            'name'     =>  'required',
-            'address'  =>    'required',
-            'amount'  =>    'required',
-        ]);
-        $port=Port::find($id);
+    
+        $port=  Port::find($id);
         $port->code=$request->code;
         $port->name=$request->name;
         $port->address=$request->address;
-        $port->save();
-        $portcharges=PortCharges::find($port->id);
-        $portcharges->port_id=$port->id;
-        $portcharges->charges_id=$request->charges_id;
-        $portcharges->amount=$request->amount;
-        $portcharges->save();
+        $port->update();
+
+        $port_charges_delete=PortCharges::where('port_id',$port->id)->delete();
+
+        if($port){
+            if(count($request->charges_id) > 0)
+            {
+                foreach($request->charges_id as $item=>$v){
+                    $data2=array(
+                        'port_id'=>$port->id,
+                        'charges_id'=>$request->charges_id[$item],
+                        'amount'=>$request->amount[$item],
+                    );
+                    PortCharges::insert($data2);
+    
+                }
+            }
+        }
         return redirect()->route('port');
     }
 

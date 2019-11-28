@@ -37,14 +37,14 @@
         <div class="box-body">
 
         <form action="
-        {{route('port.store')}}
+        {{route('port.update',['id'=>$port->id])}}
         " method="POST">
 
         <div class="field_wrapper">
             <div class="col-md-3">
                 <div class="form-group">
                     <label for="code">Code:</label>
-                    <input type="text" name="code" class="form-control"  >
+                    <input type="text" name="code" value="{{$port->code}}" class="form-control"  >
                     <span class="text-danger">{{$errors->first('code') ?? null}}</span>
                 </div>
             </div>
@@ -52,7 +52,7 @@
             <div class="col-md-3">
                     <div class="form-group">
                         <label for="code">Name:</label>
-                        <input type="text" name="name" class="form-control"  >
+                        <input type="text" name="name" value="{{$port->name}}" class="form-control"  >
                         <span class="text-danger">{{$errors->first('name') ?? null}}</span>
                     </div>
             </div>
@@ -61,7 +61,7 @@
             <div class="col-md-3">
                     <div class="form-group">
                         <label for="contact">Address</label>
-                        <input type="text" name="address" class="form-control" >
+                        <input type="text" name="address" value="{{$port->address}}" class="form-control" >
                         <span class="text-danger">{{$errors->first('address') ?? null}}</span>
                     </div>
             </div>
@@ -82,13 +82,15 @@
                             <select name="charges_id[]" id="" class="form-control">
                                 <option value="">Select Import Type</option>
                                 @foreach ($charges_import as $item)
-                                <option value="{{$item->id}}">{{$item->description}}</option>
+                                <option  value="{{$item->id}}">{{$item->description}}</option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="col-md-3">
                                 <label for="">Charges</label>
-                            <input type="text" class="form-control" name="amount[]" placeholder="Enter Charges">
+                            <input type="text" class="form-control" 
+                            
+                            name="amount[]" placeholder="Enter Charges">
                         </div>
 
                         <div class="input-group control-group after-add-more ">

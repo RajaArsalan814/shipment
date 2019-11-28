@@ -60,6 +60,14 @@ Route::get('/port/edit/{id}','PortController@edit')->name('port.edit');
 Route::post('/port/update/{id}','PortController@update')->name('port.update');
 Route::get('/port/view/{id}','PortController@port_view')->name('port_view');
 
+Route::get('/agent/create','AgentController@create')->name('agent.create');
+Route::get('/agent/index','AgentController@index')->name('agent');
+Route::post('/agent/store','AgentController@store')->name('agent.store');
+Route::get('/agent/edit/{id}','AgentController@edit')->name('agent.edit');
+Route::post('/agent/update/{id}','AgentController@update')->name('agent.update');
+Route::get('/agent/view/{id}','AgentController@agent_view')->name('agent_view');
+
+
 Route::get('/forwarder/create','ForwarderController@create')->name('forwarder.create');
 Route::get('/forwarder/index','ForwarderController@index')->name('forwarder');
 Route::post('/forwarder/store','ForwarderController@store')->name('forwarder.store');
@@ -78,12 +86,6 @@ Route::post('/container/store','ContainerController@store')->name('container.sto
 Route::get('/container/edit/{id}','ContainerController@edit')->name('container.edit');
 Route::post('/container/update/{id}','ContainerController@update')->name('container.update');
 
-Route::get('/agent/create','AgentController@create')->name('agent.create');
-Route::get('/agent/index','AgentController@index')->name('agent');
-Route::post('/agent/store','AgentController@store')->name('agent.store');
-Route::get('/agent/edit/{id}','AgentController@edit')->name('agent.edit');
-Route::post('/agent/update/{id}','AgentController@update')->name('agent.update');
-Route::get('/agent/view/{id}','AgentController@agent_view')->name('agent_view');
 
 
 Route::get('/vessel/create','VesselController@create')->name('vessel.create');
