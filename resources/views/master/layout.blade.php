@@ -445,7 +445,7 @@
               </span>
             </a>
             <ul class="treeview-menu">
-              <li><a href="general.html"> Voyage</a></li>
+              <li><a href="{{route('voyage')}}"> Voyage</a></li>
               <li class="active"><a href="advanced.html"> CRO</a></li>
               <li><a href="editors.html"> Container Release</a></li>
               <li><a href="general.html"> Slot Operator Payment</a></li>

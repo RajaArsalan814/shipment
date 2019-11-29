@@ -53,6 +53,9 @@ Route::get('/charges/edit/{id}','ChargesController@edit')->name('charges.edit');
 Route::post('/charges/update/{id}','ChargesController@update')->name('charges.update');
 
 
+
+
+
 Route::get('/port/create','PortController@create')->name('port.create');
 Route::get('/port/index','PortController@index')->name('port');
 Route::post('/port/store','PortController@store')->name('port.store');
@@ -87,6 +90,11 @@ Route::get('/container/edit/{id}','ContainerController@edit')->name('container.e
 Route::post('/container/update/{id}','ContainerController@update')->name('container.update');
 
 
+Route::get('/voyage/create','VoyageController@create')->name('voyage.create');
+Route::get('/voyage/index','VoyageController@index')->name('voyage');
+Route::post('/voyage/store','VoyageController@store')->name('voyage.store');
+Route::get('/voyage/edit/{id}','VoyageController@edit')->name('voyage.edit');
+Route::post('/voyage/update/{id}','VoyageController@update')->name('voyage.update');
 
 Route::get('/vessel/create','VesselController@create')->name('vessel.create');
 Route::get('/vessel/index','VesselController@index')->name('vessel');
